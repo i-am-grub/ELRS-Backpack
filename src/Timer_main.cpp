@@ -166,7 +166,7 @@ void OnDataRecv(const uint8_t * mac_addr, const uint8_t *data, int data_len)
           )
       {
         #if defined(PLATFORM_ESP8266)
-          ProcessMSPPacketFromTimer(msp.getReceivedPacket(), millis());
+          ProcessMSPPacketFromPeer(msp.getReceivedPacket());
         #elif defined(PLATFORM_ESP32)
           xQueueSend(rxqueue, msp.getReceivedPacket(), (TickType_t)1024);
         #endif
